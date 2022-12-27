@@ -84,11 +84,13 @@ var MongoClient = require('mongodb').MongoClient;
 
 
 function loginque (user,pass,res){
-  MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
-  if (err) throw err;
   if (user == "admin" && pass == "admin")
   res.render('home');
   else{
+  MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
+  if (err) throw err;
+  
+ 
 
   
   var db = client.db('myDB');
