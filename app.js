@@ -1,10 +1,13 @@
 var express = require('express');
 var path = require('path');
+const app = express();
+const PORT = process.env.PORT || 3030;
+
 var fs = require('fs');
-var app = express();
 var alert = require('alert');
 const { uptime } = require('process');
 const { Console } = require('console');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -317,5 +320,7 @@ MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
 });
 });
 
-app.listen(3000);
 
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
+});
