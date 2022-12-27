@@ -149,7 +149,7 @@ function search (input, res){
   for (let i = 0; i<6; i++){
     if (places[i].toLowerCase().includes(input.toLowerCase())) {
       searchresults.push(places[i]);
-      correspondingpages.push(pagesnames[i]);
+      correspondingpages.push(pagesnames[i]); 
   }}
   if (searchresults.length == 0 || input == "") {
     alert("Item not found");
