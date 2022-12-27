@@ -107,10 +107,9 @@ function loginque (user,pass,res){
       });
     });
   }
- 
 }
-
-function registerque (user, pass, res){
+//hello
+function registerque (user, pass, res){ 
   if(user.length == 0 || pass.length == 0)
   alert('Please type a valid username and password');
   else{
