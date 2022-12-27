@@ -87,25 +87,27 @@ function loginque (user,pass,res){
   if (user == "admin" && pass == "admin")
   res.render('home');
   else{
-  MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
-  if (err) throw err;
-  
- 
-
-  
-  var db = client.db('myDB');
-
-  db.collection('myCollection').find({username: user , password: pass}).toArray(function (err, results){
-    if (results.length != 0){
-      res.render('home');
+    MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
+      if (err) throw err;
       
-    }
-    else{
-
-      alert("User doesn't exist");
+      
+    
+      
+      var db = client.db('myDB');
+    
+      db.collection('myCollection').find({username: user , password: pass}).toArray(function (err, results){
+        if (results.length != 0){
+          res.render('home');
+          
+        }
+        else{
+    
+          alert("User doesn't exist");
+      }
+      });
+    });
   }
-  });}
-});
+ 
 }
 
 function registerque (user, pass, res){
