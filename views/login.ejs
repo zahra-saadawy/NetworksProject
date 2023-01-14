@@ -14,10 +14,53 @@
         }
         .cont {
             position:relative;
-            left:600px;
-            top:50px;
+            left:1100px;
+            top:150px;
             color: white;
+            box-sizing: border-box;
         }
+        .top-left {
+            position: absolute;
+            top: 150px;
+            left: 100px;
+            text-transform: uppercase;
+            font-size: 100px;
+            scroll-margin-bottom:   30px ;
+            color: darkslategrey;
+            font-style: normal;
+            font-weight: bold;
+            
+          }
+          .description{
+            position: absolute;
+            top: 300px;
+            left: 100px;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 30px;
+            scroll-margin-bottom:  30px ;
+            color: grey;
+            
+          }
+          .input{
+            width: 370px;
+            height: 60px;
+            
+          }
+        .reg{
+            color: black;
+        }
+         .log{
+            
+            width: 370px;
+            height: 60px;
+            background-color: darkslategray;
+            color: whitesmoke;
+            font-size: 80;
+            align-self: center;
+         }
+         .tex{
+            color: darkslategray;
+         }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,25 +68,35 @@
     <title>Welcome</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+ 
+    </head>
 
 <body>
     <div class="container">
-        <h1>Welcome</h1>
+       
     </div>
     <div class="cont">
         <h2 hidden id="regsuc">Resgistration was succesful</h2>
         <form method="POST" action="/home">
-            Username:<br>
-            <input type="text" name="username">
+            <div  class = "tex">
+                Username
+            </div>
+            
+            <input class = "input" type="text" name="username" >
             <br>
-            Password:<br>
-            <input type="password" name="password">
+            <div  class = "tex">
+               
+                Password
+            </div>
+            <input class = "input" type="password" name="password" >
             <br><br>
-            <input type="submit" value="Login">
+            <input class ="log"type="submit" value="Login" >
         </form>
         <br>
-        <a href="registration">I dont have an account</a>
+        <a class="reg" href="registration"> I dont have an account </a>
     </div>
+    <div class="top-left">BYTE ME</div>
+    <div class="description">Explore the world through ByteMe and 
+        find <br/> out your next destination </div>
 </body>
 </html>

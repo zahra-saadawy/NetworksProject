@@ -15,31 +15,56 @@
         .container1 {
             position: fixed;
             left: 50px;
-            top: 150px;
+            top: 200px;
             color: white;
         }
         .container2 {
             position: fixed;
-            left: 300px;
-            top: 150px;
-            color: white;
-            width: 300px;
+            left: 450px;
+            top: 200px;
+           
+            width: 400px;
             text-align: justify;
             text-justify: inter-word;
+            color: black;
+            font-size: 23px;
+         
+            font-family :Arial, Helvetica, sans-serif;
+            
         }
         .video {
             position: fixed;
-            left: 700px;
-            top: 150px;
+            left: 1000px;
+            top: 180px;
             color: white;
             width: 300px;
             text-align: justify;
             text-justify: inter-word;
         }
-        .wanttogo {
-            position: fixed;
-            left: 30px;
-            top: 470px;
+        .b {
+            position: absolute;
+            left: 49px;
+            top: 520px;
+            height: 30px;
+            width: 375px;
+            background-color: darkslategray;
+            font-size: 20px;
+            border-radius: 7px;
+            color: white;
+            border-color: darkslategray;
+            font-family :Arial, Helvetica, sans-serif;
+        }
+       
+         .bar{
+            color: darkslategray;
+        }
+        .collapse{
+            color: darkslategray;
+            background-color: darkslategray;
+        }
+        .navbar{
+            color: darkslategray;
+            background-color: darkslategray;
         }
         #my {
             zoom: 110%;
@@ -48,14 +73,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Inca Trail to Machu Picchu</title>
+    <title>ByteMe-Inca Trial To Machu Picchu</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
-        <a class="navbar-brand" style="color: rgb(191, 255, 161)">Inca Trail to Machu Picchu</a>
+    
+    <nav class="navbar navbar-expand-lg ">
+        <a class="navbar-brand" style=" font-size: 25px; font-family :Arial, Helvetica, sans-serif; 
+        color: white" >ByteMe-Inca Trial To Machu Picchu</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -64,22 +91,25 @@
             <ul class="navbar-nav mr-auto">
             </ul>
             <form method="POST" action='/search' class="form-inline my-2 my-lg-0">
+
                 <input class="form-control mr-sm-2" name="Search" type="search" placeholder="Search"
-                    aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+                aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0"   style = " font-size: 15px; background-color: lightslategrey; 
+            font-family :Arial, Helvetica, sans-serif;
+            color: white; border-color: lightslategrey; height: 40px; border-radius: 5px;" type="submit">Search</button>
+             </form>
         </div>
     </nav>
     <div class="container1">
-        <img id="image" src="/inca.png" width="193" height="300">
+        <img id="image" src="/inca.png" width="375" height="300">
     </div>
     <div class="container2">
         Peru's Inca Trail is perhaps the world's greatest hike because it combines the best of both types of travel: a four-to-five day walk to the spectacular lost city of Machu Picchu that winds through the zone where the snowcapped Andes Mountains crash into the lush Amazon jungle.
     </div>
     <div class="wanttogo">
-        <!-- <button id="wanttogo" class="btn btn-secondary ml-3">Add to Want-to-Go List</button> -->
+        
         <form  method='post' action='/inca'>
-            <input type="submit" value="Add to Want-to-Go List" class="btn btn-secondary ml-3">
+            <input type="submit" value="Add to Want-to-Go List" class="b">
         </form>
     </div>
     <div class="video">

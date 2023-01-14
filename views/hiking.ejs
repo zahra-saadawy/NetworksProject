@@ -22,38 +22,99 @@
         .container1 {
             position: fixed;
             left: 50px;
-            top: 150px;
+            top: 200px;
             color: white;
         }
         .container2 {
             position: fixed;
-            left: 300px;
-            top: 150px;
+            left: 510px;
+            top: 200px;
             color: white;
         }
         #label1 {
-            position: relative;
-            right: 10px;
+            position: absolute;
+            left: 10px;
+            top: 302px;
         }
         #label2 {
-            position: relative;
-            right: 0px;
+            position: absolute;
+            left: 15px;
+            top: 302px;
         }
-        #inca, #annapurna {
-            position: relative;
+       
+        img.rounded-corners {
+            border-radius: 15px;
+
+        }
+        .la{
+            
+            color: black;
+            position: fixed;
+            font-size: 24px;
+            font-family :Arial, Helvetica, sans-serif;
+        }
+        .b1{
+
+            position: absolute;
+            top: 342px;
+            left: 6px;
+            height: 30px;
+            width: 375px;
+            background-color: darkslategray;
+            font-size: 20px;
+            border-radius: 7px;
+            color: white;
+            border-color: darkslategray;
+            font-family :Arial, Helvetica, sans-serif;
+            
+        }
+        .b2{
+            position: absolute;
+            top: 342px;
+            left: 5px;
+            height: 30px;
+            width: 375px;
+            background-color: darkslategray;
+            font-size: 20px;
+            border-radius: 7px;
+            color: white;
+            border-color: darkslategray;
+            font-family :Arial, Helvetica, sans-serif;
+            
+        }
+        .header{
+            color: black;
+            position: fixed;
             left: 50px;
+            top: 130px;
+            font-size: 31px;
+            font-weight: bold;
+            font-family :Arial, Helvetica, sans-serif;
+            
+         }
+         .bar{
+            color: darkslategray;
+        }
+        .collapse{
+            color: darkslategray;
+            background-color: darkslategray;
+        }
+        .navbar{
+            color: darkslategray;
+            background-color: darkslategray;
         }
     </style>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta class ="bar" ; name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hiking</title>
+    <title>ByteMe</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
-        <a class="navbar-brand" style="color: rgb(191, 255, 161)">Hiking</a>
+    <nav class="navbar navbar-expand-lg ">
+        <a class="navbar-brand" style=" font-size: 25px; font-family :Arial, Helvetica, sans-serif; 
+        color: white" >ByteMe</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -62,25 +123,34 @@
             <ul class="navbar-nav mr-auto">
             </ul>
             <form method="POST" action='/search' class="form-inline my-2 my-lg-0">
+                <div class="header">
+                    Choose your hiking destination
+                </div>
                 <input class="form-control mr-sm-2" name="Search" type="search" placeholder="Search"
-                    aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0"   style = " font-size: 15px; background-color: lightslategrey; 
+            font-family :Arial, Helvetica, sans-serif;
+            color: white; border-color: lightslategrey; height: 40px; border-radius: 5px;" type="submit">Search</button>
             </form>
         </div>
     </nav>
     <div class="container1">
-        <img id="image" src="/inca.png" width="193" height="300">
+        <p>
+             
+        <img class="wdn-stretch rounded-corners" id="image" src="/inca.png" width="375" height="300"> </p>
         <br>
-        <label id="label1" class="ml-4 my-2">Inca Trail to Machu Picchu</label>
+        <label id="label1" class="la">Inca Trail to Machu Picchu </label>
         <br>
-        <button onclick="location.href = '/inca';" id="inca" class="btn btn-secondary ml-3"> View </button>
+        <button onclick="location.href = '/inca';" id="inca" class="b1"> View </button>
     </div>
     <div class="container2">
-        <img id="image" src="/annapurna.png" width="193" height="300">
+        <p>
+          <img class="wdn-stretch rounded-corners" src="/annapurna.png" width="375" height="300">
+            </p>
         <br>
-        <label id ="label2" class="ml-4 my-2">Annapurna Circuit</label>
+        <label id ="label2" class="la">Annapurna Circuit</label>
         <br>
-        <button onclick="location.href = '/annapurna';" id="annapurna" class="btn btn-secondary ml-3"> View </button>
+        <button onclick="location.href = '/annapurna';" id="annapurna" class="b2"> View </button>
     </div>
 </body>
 </html>

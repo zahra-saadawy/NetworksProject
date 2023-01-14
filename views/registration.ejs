@@ -15,11 +15,48 @@
         }
         .cont {
             position:relative;
-            left:600px;
-            top:50px;
+            left:650px;
+            top: 130px;
             color: white;
-            -webkit-text-stroke: 0.5px black;
+            box-sizing: border-box;
         }
+        .top-left {
+            position: absolute;
+            top: 250px;
+            left: 350px;
+            text-transform: uppercase;
+            font-size: 100px;
+            scroll-margin-bottom:   30px ;
+            color: darkslategrey;
+            font-style: normal;
+            font-weight: bold;
+            
+          }
+         
+          
+          .input{
+            width: 370px;
+            height: 60px;
+            
+          }
+        .log{
+            
+            width: 370px;
+            height: 60px;
+            background-color: darkslategray;
+            color: whitesmoke;
+            font-size: 80;
+            align-self: center;
+         }
+         .tex{
+            color: darkslategray;
+         }
+         .header{
+            color: black;
+            font-size: 22px;
+            font-weight: bold;
+            font-family :Arial, Helvetica, sans-serif;
+         }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,15 +68,26 @@
 
 <body>
     <div class="container">
-        <h1>Registration</h1>
+        
     </div>
     <div class="cont">
-        <form method='post' action='/login'>
-            Username: <br>
-            <input type="text" id="user" name="username"> <br>
-            Password: <br>
-            <input type="password" id="password" name="password"> <br> <br>
-            <input type="submit" id="simple_click" class="btn btn-secondary" value="Register"> <br>
+     <form method='post' action='/login'>
+        <div class="header">
+            Create a new ByteMe account
+        </div>
+            <div  class = "tex">
+                Username
+            </div>
+            
+            <input class = "input" type="text" name="username" >
+            <br>
+            <div  class = "tex">
+               
+                Password
+            </div>
+            <input class = "input" type="password" name="password" >
+            <br><br>
+            <input class ="log" type="submit" value="Register" >
         </form>
     </div>
 </body>

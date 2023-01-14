@@ -20,24 +20,37 @@
 
         }
         
-        .image {
-              display: flex;
-              flex-direction: column;
-              flex-wrap: wrap;
-              color: beige;
-              border-color: azure;
+        .container {
+  position: relative;
+  width: 240px;
+  height: 120px;
+}
 
-        }
-        .flex-container {
+        p {
                display: flex;
                flex-direction: column;
                flex-wrap: wrap;
                color: white;
                text-transform: uppercase;
                font-size: 20px;
-               
                scroll-margin-bottom:   30px ;
         }
+           .flex-container .rect{
+                width: 100%;
+            position: relative;
+            top: 0;
+            }
+            .flex-container.image {
+                display: flex;
+              flex-direction: column;
+              flex-wrap: wrap;
+                position: absolute;
+            top: 80px;
+            right: 15px;
+            
+            }
+
+
         .button1 {
             border: none;
             color: white;
@@ -86,15 +99,18 @@
     
     <!-- <h2><%= list %></h2> -->
     <div class = "flex-container">
-        <%for (var i = 0; i< list.length; i++){ %>
+        <%for (var i = 0; i< list.length ; i++){ %>
            
                <div>
-                
-                     <img id = "image" src = "/<%= list[i]%>.png" width = "250" height="250">
-                    </div>
-                     <p>
+                <img id = "image"  src = "/<%= list[i]%>.png" width = "250" height="250">
+                <svg width="400" height="250">
+                    <rect id = "rect"  width="400" height="250"
+                    style="fill:whitesmoke; ;fill-opacity:0.9;stroke-opacity:0" />
+                  </svg>
+                  <p> 
                         <%= list[i]%> 
-                    </p>
+                    </p>>
+                </div>
                     
                     <div>
                     <button onclick="location.href = '/<%= list[i]%>';" id=<%= list[i]%> class=""button button1""> View

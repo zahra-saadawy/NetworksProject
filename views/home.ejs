@@ -4,7 +4,7 @@
     <style>
         body {
             background-image: url("background3.jpg");
-            background-repeat: no-repeat;
+            background-repeat: repeat;
             background-size: 100%;
         }
         h1 {
@@ -16,44 +16,114 @@
             position: relative;
             left: 600px;
             top: 50px;
-            color: white;
+            color: black;
             -webkit-text-stroke: 0.5px black;
         }
+       
         .container1 {
             position: fixed;
-            left: 50px;
-            top: 150px;
+            left: 430px;
+            top: 200px;
             color: white;
+        }
+        .b{
+            
+            height: 30px;
+            width: 240px;
+            background-color: darkslategray;
+            font-size: 20px;
+            border-radius: 7px;
+            color: white;
+            border-color: darkslategray;
+            font-family :Arial, Helvetica, sans-serif;
+            
+        }
+        .b1{
+            
+            height: 30px;
+            width: 240px;
+            background-color: darkslategray;
+            font-size: 20px;
+            border-radius: 7px;
+            color: white;
+            border-color: darkslategray;
+            font-family :Arial, Helvetica, sans-serif;
+            
+        }
+        .b2{
+            
+            height: 30px;
+            width: 240px;
+            background-color: darkslategray;
+            font-size: 20px;
+            border-radius: 7px;
+            color: white;
+            border-color: darkslategray;
+            font-family :Arial, Helvetica, sans-serif;
+            
         }
         .container2 {
             position: fixed;
-            left: 200px;
-            top: 150px;
+            left: 970px;
+            top: 200px;
             color: white;
         }
+      
         .container3 {
             position: fixed;
-            left: 350px;
-            top: 150px;
+            left: 700px;
+            top: 200px;
+           
             color: white;
         }
+      
         .wanttogo {
             position: fixed;
             left: 80px;
             top: 370px;
+
+        }
+        .navbar-toggler {
+            color: darkslategrey;
+        }
+       
+        img.rounded-corners {
+            border-radius: 15px;
+        }
+        .header{
+            color: black;
+            position: fixed;
+            left: 430px;
+            top: 130px;
+            font-size: 31px;
+            font-weight: bold;
+            font-family :Arial, Helvetica, sans-serif;
+            
+         }
+        .bar{
+            color: darkslategray;
+        }
+        .collapse{
+            color: darkslategray;
+            background-color: darkslategray;
+        }
+        .navbar{
+            color: darkslategray;
+            background-color: darkslategray;
         }
     </style>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta class="bar" name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Destinations</title>
+    <title>ByteMe</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
-        <a class="navbar-brand" style="color: rgb(191, 255, 161)">Destinations</a>
+    <nav class="navbar navbar-expand-lg ">
+        <a class="navbar-brand" style=" font-size: 25px; font-family :Arial, Helvetica, sans-serif; 
+        color: white" >ByteMe</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -62,39 +132,51 @@
             <ul class="navbar-nav mr-auto">
             </ul>
             <form method="POST" action='/search' class="form-inline my-2 my-lg-0">
+                <div class="header">
+                    What kind of place are you looking for?
+                </div>
                 <input class="form-control mr-sm-2" name="Search" type="search" placeholder="Search"
                     aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-success my-2 my-sm-0"   style = " font-size: 15px; background-color: lightslategrey; 
+                font-family :Arial, Helvetica, sans-serif;
+                color: white; border-color: lightslategrey; height: 40px; border-radius: 5px;" type="submit">Search</button>
             </form>
         </div>
     </nav>
 
     <div class="container">
-        <h1>Welcome</h1>
+       
     </div>
     <div class="container1">
-        <img id="image" src="/hiking.png" width="100" height="100">
+        <p>
+        <img class="wdn-stretch rounded-corners" id="image" src="/hiking.png" width="240" height="300">
+        </p>
         <br>
-        <label class="ml-4 my-2">Hiking</label>
-        <br>
-        <button onclick="location.href = '/hiking';" id="hiking" class="btn btn-secondary ml-3"> View </button>
+        
+        <button onclick="location.href = '/hiking';" id="hiking" class="b rounded-corners"> Hiking </button>
     </div>
     <div class="container2">
-        <img id="image" src="/cities.png" width="100" height="100">
+        <p>
+        <img class="wdn-stretch rounded-corners"id="image" src="/cities.png"  width="240" height="300">
+       
+        </p>
         <br>
-        <label class="ml-4 my-2">Cities</label>
-        <br>
-        <button onclick="location.href = '/cities';" id="cities" class="btn btn-secondary ml-3"> View </button>
+        
+        <button onclick="location.href = '/cities';" id="cities" class="b2"> Cities </button>
     </div>
     <div class="container3">
-        <img id="image" src="/islands.png" width="100" height="100">
+       <p>
+        <img class="wdn-stretch rounded-corners" id="image" src="/islands.png" width="240" height="300">
+       </p>
         <br>
-        <label class="ml-4 my-2">Islands</label>
-        <br>
-        <button onclick="location.href = '/islands';" id="islands" class="btn btn-secondary ml-3"> View </button>
+       
+        <button onclick="location.href = '/islands';" id="islands" class="b1"> Islands </button>
     </div>
     <div class="wanttogo">
-        <button onclick="location.href = '/wanttogo';" id="wanttogo" class="btn btn-secondary ml-3" style="width: 300px;">Want-to-Go List</button>
+        <button onclick="location.href = '/wanttogo';" id="wanttogo"  style = "position:fixed; left:430px; top :620px; 
+        font-size: 20px; background-color: lightslategrey; font-family :Arial, Helvetica, sans-serif;
+        color: white; border-color: lightslategrey; width: 300px; border-radius: 5px;">
+        View Your Want-to-go List</button>
     </div>
 </body>
 </html>
