@@ -1,10 +1,13 @@
 var express = require('express');
 var path = require('path');
+const app = express();
+const PORT = process.env.PORT || 3030;
+
 var fs = require('fs');
-var app = express();
 var alert = require('alert');
 const { uptime } = require('process');
 const { Console } = require('console');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -81,24 +84,32 @@ var MongoClient = require('mongodb').MongoClient;
 
 
 function loginque (user,pass,res){
-  MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
-  if (err) throw err;
-  var db = client.db('MyDB');
-
-  db.collection('FirstCollection').find({username: user , password: pass}).toArray(function (err, results){
-    if (results.length != 0){
-      res.render('home');
+  if (user == "admin" && pass == "admin")
+  res.render('home');
+  else{
+    MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
+      if (err) throw err;
       
-    }
-    else{
-
-      alert("User doesn't exist");
+      
+    
+      
+      var db = client.db('myDB');
+    
+      db.collection('myCollection').find({username: user , password: pass}).toArray(function (err, results){
+        if (results.length != 0){
+          res.render('home');
+          
+        }
+        else{
+    
+          alert("User doesn't exist");
+      }
+      });
+    });
   }
-  });
-});
 }
-
-function registerque (user, pass, res){
+//hello
+function registerque (user, pass, res){ 
   if(user.length == 0 || pass.length == 0)
   alert('Please type a valid username and password');
   else{
@@ -106,11 +117,11 @@ function registerque (user, pass, res){
   
   MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
     if (err) throw err;
-    var db = client.db('MyDB');
-    db.collection('FirstCollection').find({username: user}).toArray(function (err, results){
+    var db = client.db('myDB');
+    db.collection('myCollection').find({username: user}).toArray(function (err, results){
 
       if (results.length == 0){
-        db.collection('FirstCollection').insertOne({username: user, password: pass, destinations: []});
+        db.collection('myCollection').insertOne({username: user, password: pass, destinations: []});
         res.render('login');
         alert("Registration successful");
       }
@@ -126,9 +137,9 @@ function viewlist (res){
   var string1= new Array();
   MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
     if (err) throw err;
-    var db = client.db('MyDB');
+    var db = client.db('myDB');
  
-  db.collection('FirstCollection').find({username: userx, password: usery},{projection: {_id:0, username:0 , password:0}}).toArray(function (err, results){
+  db.collection('myCollection').find({username: userx, password: usery},{projection: {_id:0, username:0 , password:0}}).toArray(function (err, results){
     var desttemp = results[0].destinations;
     var l = desttemp.length;
     string1.push( desttemp[0]);
@@ -152,12 +163,12 @@ function search (input, res){
       correspondingpages.push(pagesnames[i]); 
   }}
   if (searchresults.length == 0 || input == "") {
-    alert("Item not found");
+    alert("Destination not found");
     res.redirect('home');
 }
 else {
     console.log(searchresults);
-    res.render('searchresults', { places: searchresults, pages: correspondingpages });
+    res.render('searchresults', { place: searchresults, pages: correspondingpages });
 }
 }
 app.post('/search', function (req, res) {
@@ -168,8 +179,8 @@ app.post('/search', function (req, res) {
 app.post('/bali', function(req,res){
   MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
     if (err) throw err;
-    var db = client.db('MyDB');
-    db.collection('FirstCollection').find({username: userx, password: usery},{projection: {_id:0, username:0 , password:0}}).toArray(function (err, results){
+    var db = client.db('myDB');
+    db.collection('myCollection').find({username: userx, password: usery},{projection: {_id:0, username:0 , password:0}}).toArray(function (err, results){
       var desttemp = results[0].destinations;
       var exists = false;
       var len = desttemp.length;
@@ -183,9 +194,10 @@ app.post('/bali', function(req,res){
       }
       else{
         desttemp.push('Bali');
-        db.collection('FirstCollection').updateOne({username: userx, password: usery},{$set: {destinations: desttemp}});
+        db.collection('myCollection').updateOne({username: userx, password: usery},{$set: {destinations: desttemp}});
       }
       });
+
         
 });
 });
@@ -193,8 +205,8 @@ app.post('/bali', function(req,res){
 app.post('/annapurna', function(req,res){
 MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
   if (err) throw err;
-  var db = client.db('MyDB');
-  db.collection('FirstCollection').find({username: userx, password: usery},{projection: {_id:0, username:0 , password:0}}).toArray(function (err, results){
+  var db = client.db('myDB');
+  db.collection('myCollection').find({username: userx, password: usery},{projection: {_id:0, username:0 , password:0}}).toArray(function (err, results){
     var desttemp = results[0].destinations;
     var exists = false;
       var len = desttemp.length;
@@ -208,7 +220,7 @@ MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
       }
       else{
         desttemp.push('annapurna');
-        db.collection('FirstCollection').updateOne({username: userx, password: usery},{$set: {destinations: desttemp}});
+        db.collection('myCollection').updateOne({username: userx, password: usery},{$set: {destinations: desttemp}});
       }
   });
 });
@@ -217,8 +229,8 @@ MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
 app.post('/inca', function(req,res){
 MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
   if (err) throw err;
-  var db = client.db('MyDB');
-  db.collection('FirstCollection').find({username: userx, password: usery},{projection: {_id:0, username:0 , password:0}}).toArray(function (err, results){
+  var db = client.db('myDB');
+  db.collection('myCollection').find({username: userx, password: usery},{projection: {_id:0, username:0 , password:0}}).toArray(function (err, results){
     var desttemp = results[0].destinations;
     var exists = false;
       var len = desttemp.length;
@@ -232,7 +244,7 @@ MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
       }
       else{
         desttemp.push('inca');
-        db.collection('FirstCollection').updateOne({username: userx, password: usery},{$set: {destinations: desttemp}});
+        db.collection('myCollection').updateOne({username: userx, password: usery},{$set: {destinations: desttemp}});
       }
   });
 });
@@ -241,8 +253,8 @@ MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
 app.post('/rome', function(req,res){
 MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
   if (err) throw err;
-  var db = client.db('MyDB');
-  db.collection('FirstCollection').find({username: userx, password: usery},{projection: {_id:0, username:0 , password:0}}).toArray(function (err, results){
+  var db = client.db('myDB');
+  db.collection('myCollection').find({username: userx, password: usery},{projection: {_id:0, username:0 , password:0}}).toArray(function (err, results){
     var desttemp = results[0].destinations;
     var exists = false;
       var len = desttemp.length;
@@ -256,7 +268,7 @@ MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
       }
       else{
         desttemp.push('rome');
-        db.collection('FirstCollection').updateOne({username: userx, password: usery},{$set: {destinations: desttemp}});
+        db.collection('myCollection').updateOne({username: userx, password: usery},{$set: {destinations: desttemp}});
       }
   });
 });
@@ -265,8 +277,8 @@ MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
 app.post('/paris', function(req,res){
 MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
   if (err) throw err;
-  var db = client.db('MyDB');
-  db.collection('FirstCollection').find({username: userx, password: usery},{projection: {_id:0, username:0 , password:0}}).toArray(function (err, results){
+  var db = client.db('myDB');
+  db.collection('myCollection').find({username: userx, password: usery},{projection: {_id:0, username:0 , password:0}}).toArray(function (err, results){
     var desttemp = results[0].destinations;
     
     var exists = false;
@@ -281,7 +293,7 @@ MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
       }
       else{
         desttemp.push('paris');
-        db.collection('FirstCollection').updateOne({username: userx, password: usery},{$set: {destinations: desttemp}});
+        db.collection('myCollection').updateOne({username: userx, password: usery},{$set: {destinations: desttemp}});
       }
   });
 });
@@ -290,8 +302,8 @@ MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
 app.post('/santorini', function(req,res){
 MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
   if (err) throw err;
-  var db = client.db('MyDB');
-  db.collection('FirstCollection').find({username: userx, password: usery},{projection: {_id:0, username:0 , password:0}}).toArray(function (err, results){
+  var db = client.db('myDB');
+  db.collection('myCollection').find({username: userx, password: usery},{projection: {_id:0, username:0 , password:0}}).toArray(function (err, results){
     var desttemp = results[0].destinations;
     var exists = false;
       var len = desttemp.length;
@@ -305,11 +317,13 @@ MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client){
       }
       else{
         desttemp.push('santorini');
-        db.collection('FirstCollection').updateOne({username: userx, password: usery},{$set: {destinations: desttemp}});
+        db.collection('myCollection').updateOne({username: userx, password: usery},{$set: {destinations: desttemp}});
       }
   });
 });
 });
 
-app.listen(3000);
 
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
+});
